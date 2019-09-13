@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.haitham.cafemanagment.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cart"
+        android:icon="@drawable/ic_cart"
+        android:title="Cart"
+        app:showAsAction="ifRoom"></item>
+
+    <item
+        android:id="@+id/inventory"
+        android:icon="@drawable/ic_store"
+        android:title="Inventory" />
+
+    <item
+        android:id="@+id/report"
+        android:title="Report"></item>
+</menu>
