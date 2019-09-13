@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7A8AE2"
+    android:background="@color/myblue"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/cardview_shadow_end_color">
+        android:background="@color/cardview_shadow_start_color">
 
         <TextView
             android:id="@+id/tvi_itemName"

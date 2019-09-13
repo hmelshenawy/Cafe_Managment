@@ -21,6 +21,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/ed_coffee1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/coffee" />
+
             <EditText
                 android:id="@+id/ed_coffAmnt"
                 android:layout_width="0dp"
@@ -40,13 +47,6 @@
                 android:scaleType="center"
                 android:src="@drawable/ic_add"
                 tools:src="@drawable/ic_add" />
-
-            <TextView
-                android:id="@+id/ed_coffee1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/coffee" />
 
         </LinearLayout>
 
@@ -83,6 +83,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/milk" />
+
             <EditText
                 android:id="@+id/ed_milkAmnt"
                 android:layout_width="0dp"
@@ -100,13 +107,6 @@
                 android:onClick="add_Stock"
                 android:src="@drawable/ic_add"
                 tools:src="@drawable/ic_add" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/milk" />
 
         </LinearLayout>
 
@@ -143,6 +143,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/suger" />
+
             <EditText
                 android:id="@+id/ed_sugerAmnt"
                 android:layout_width="0dp"
@@ -158,13 +165,6 @@
                 android:layout_weight="1"
                 android:onClick="add_Stock"
                 android:src="@drawable/ic_add" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/suger" />
 
         </LinearLayout>
 
@@ -191,7 +191,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/myblue"
+        android:background="@color/cardview_shadow_end_color"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar

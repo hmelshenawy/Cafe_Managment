@@ -10,6 +10,7 @@
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:background="@color/cardview_shadow_start_color"
         android:orientation="horizontal">
 
         <TextView
@@ -41,8 +42,7 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="50dp"
-
+            android:layout_height="match_parent"
             android:background="#D3ABCCDB" />
 
     </LinearLayout>

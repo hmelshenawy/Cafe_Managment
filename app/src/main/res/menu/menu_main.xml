@@ -22,4 +22,8 @@
     <item
         android:id="@+id/report"
         android:title="Report"></item>
+
+    <item
+        android:id="@+id/send"
+        android:title="Send" />
 </menu>

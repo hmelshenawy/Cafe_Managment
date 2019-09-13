@@ -1,6 +1,7 @@
 package com.haitham.cafemanagment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -107,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
             SEC_DB_Adaptor sec_db_adaptor = new SEC_DB_Adaptor(this);
             sec_db_adaptor.csv_Writer();
             Toast.makeText(this, "Records Exported!!", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.send) {
+
+            composeEmail();
+
         }
 
 
@@ -132,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public int[] inventory_Subtract(ArrayList<Drink_class> Arr_Drinks) {
 
         int coffee = 0;
@@ -152,5 +160,27 @@ public class MainActivity extends AppCompatActivity {
                 Toast.LENGTH_LONG).show();
 
         return cons;
+    }
+
+
+    public void composeEmail() {
+
+        File f = new File(getExternalFilesDir(null).getPath() + File.separator + "Records.csv");
+        String subject = "Records";
+        String[] addresses = {"hm.elshenawy@gmail.com"};
+        Uri attachment = FileProvider.getUriForFile(this, this.getApplicationContext()
+                .getPackageName() + ".provider", f);
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_STREAM, attachment);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+
+        }
     }
 }

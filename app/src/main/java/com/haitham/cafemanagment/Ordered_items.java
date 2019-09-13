@@ -107,38 +107,46 @@ public class Ordered_items extends AppCompatActivity {
 
     public void order_Confirm(View view) {
 
-        // First step to check if there is enough resources to make the customer order.
-        resources_Availablity(mDrink_classes);
+        //First check if the cart is empty or no
+        if (mDrink_classes.size() == 0) {
 
-        if (resources_Availablity(mDrink_classes) == false) {
+            Toast.makeText(this, "Cart is empty !!", Toast.LENGTH_SHORT).show();
+            return;
 
-            // if resoursces are not available show message to user to Add resources.
+        } else {
 
-            Toast.makeText(this, "You are out of resources !!", Toast.LENGTH_LONG).show();
+            // Second step to check if there is enough resources to make the customer order.
+            resources_Availablity(mDrink_classes);
 
-        } else { // if resources are available will proceed in the order
+            if (resources_Availablity(mDrink_classes) == false) {
 
-            inventory_Subtract();
+                // if resoursces are not available show message to user to Add resources.
 
-            //Return intent for mainActivity with result mDrink_List of purchased items.
-            Intent in = new Intent();
-            in.putParcelableArrayListExtra("drinks", mDrink_classes);
-            in.putExtra("test", total_Invoice());
-            setResult(RESULT_OK, in);
-            finish();
+                Toast.makeText(this, "You are out of resources !!", Toast.LENGTH_LONG).show();
 
-            // Add purchased items to final records Data_Base
-            for (int i = 0; i < mDrink_classes.size(); i++) {
+            } else { // if resources are available will proceed in the order
 
-                secDB_Adaptor.insertData(mDrink_classes.get(i).item_name, mDrink_classes.get(i).price, mDrink_classes.get(i).quantity, mDrink_classes.get(i).Coffee_Unit, mDrink_classes.get(i).Milk_Unit, mDrink_classes.get(i).Suger_Unit);
+                inventory_Subtract();
+
+                //Return intent for mainActivity with result mDrink_List of purchased items.
+                Intent in = new Intent();
+                in.putParcelableArrayListExtra("drinks", mDrink_classes);
+                in.putExtra("test", total_Invoice());
+                setResult(RESULT_OK, in);
+                finish();
+
+                // Add purchased items to final records Data_Base
+                for (int i = 0; i < mDrink_classes.size(); i++) {
+
+                    secDB_Adaptor.insertData(mDrink_classes.get(i).item_name, mDrink_classes.get(i).price, mDrink_classes.get(i).quantity, mDrink_classes.get(i).Coffee_Unit, mDrink_classes.get(i).Milk_Unit, mDrink_classes.get(i).Suger_Unit);
+                }
+                Toast.makeText(this, "Order done sucessfully", Toast.LENGTH_SHORT).show();
+                DB_Adaptor.removeAllData_FirstTable();
+                mDrink_classes.clear();
+                items_adaptor.notifyDataSetChanged();
+                tv_total.setText("0.00");
             }
-
-            DB_Adaptor.removeAllData_FirstTable();
-            mDrink_classes.clear();
-            items_adaptor.notifyDataSetChanged();
-            tv_total.setText("0.00");
         }
-
     }
 
 
