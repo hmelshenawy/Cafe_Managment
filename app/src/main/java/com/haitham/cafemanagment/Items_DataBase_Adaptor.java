@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -27,22 +26,22 @@ public class Items_DataBase_Adaptor {
     public void insertData(String itemName, double price, int quantity, int coffee, int milk, int suger) {
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(mhelper.COLUMN_ITEMNAME, itemName);
-        contentValues.put(mhelper.COLUMN_PRICE, price);
-        contentValues.put(mhelper.COLUMN_QUANTITY, quantity);
-        contentValues.put(mhelper.COLUMN_COFFEE_UNITS, coffee);
-        contentValues.put(mhelper.COLUMN_MILK_UNITS, milk);
-        contentValues.put(mhelper.COLUMN_SUGER_UNITS, suger);
-        long l = mSQLiteDB.insert(mhelper.TABLE_NAME, null, contentValues);
+        contentValues.put(Items_DB_helper.COLUMN_ITEMNAME, itemName);
+        contentValues.put(Items_DB_helper.COLUMN_PRICE, price);
+        contentValues.put(Items_DB_helper.COLUMN_QUANTITY, quantity);
+        contentValues.put(Items_DB_helper.COLUMN_COFFEE_UNITS, coffee);
+        contentValues.put(Items_DB_helper.COLUMN_MILK_UNITS, milk);
+        contentValues.put(Items_DB_helper.COLUMN_SUGER_UNITS, suger);
+        long l = mSQLiteDB.insert(Items_DB_helper.TABLE_NAME, null, contentValues);
 
     }
 
     public ArrayList<Drink_class> getAllData() {
 
         items_ArrayList = new ArrayList<>();
-        String[] columns = {mhelper.UID , mhelper.COLUMN_ITEMNAME,mhelper.COLUMN_QUANTITY, mhelper.COLUMN_PRICE,
-                                mhelper.COLUMN_COFFEE_UNITS, mhelper.COLUMN_MILK_UNITS, mhelper.COLUMN_SUGER_UNITS };
-        Cursor cursor = mSQLiteDB.query(mhelper.TABLE_NAME, columns, null, null, null, null, null);
+        String[] columns = {Items_DB_helper.UID, Items_DB_helper.COLUMN_ITEMNAME, Items_DB_helper.COLUMN_QUANTITY, Items_DB_helper.COLUMN_PRICE,
+                Items_DB_helper.COLUMN_COFFEE_UNITS, Items_DB_helper.COLUMN_MILK_UNITS, Items_DB_helper.COLUMN_SUGER_UNITS};
+        Cursor cursor = mSQLiteDB.query(Items_DB_helper.TABLE_NAME, columns, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
 
@@ -70,13 +69,13 @@ public class Items_DataBase_Adaptor {
 
     public void removeAllData_FirstTable() {
 
-        String delete = "DELETE FROM " + mhelper.TABLE_NAME;
+        String delete = "DELETE FROM " + Items_DB_helper.TABLE_NAME;
         mSQLiteDB.execSQL(delete);
     }
 
     public void removeRow_FirstTable(long id){
 
-        mSQLiteDB.delete(mhelper.TABLE_NAME,mhelper.UID + " = "+ id, null  );
+        mSQLiteDB.delete(Items_DB_helper.TABLE_NAME, Items_DB_helper.UID + " = " + id, null);
     }
 
     class Items_DB_helper extends SQLiteOpenHelper {
