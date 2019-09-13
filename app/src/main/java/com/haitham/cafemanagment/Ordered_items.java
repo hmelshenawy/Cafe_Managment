@@ -3,6 +3,8 @@ package com.haitham.cafemanagment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -95,6 +97,13 @@ public class Ordered_items extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.oredered_items_menu, menu);
+        return true;
+    }
 
     public void order_Confirm(View view) {
 

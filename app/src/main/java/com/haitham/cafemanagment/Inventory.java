@@ -5,8 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,9 +16,9 @@ import androidx.appcompat.widget.Toolbar;
 
 public class Inventory extends AppCompatActivity {
 
-    Button btn_AddCoffe;
-    Button btn_AddMilk;
-    Button btn_AddSuger;
+    ImageButton btn_AddCoffe;
+    ImageButton btn_AddMilk;
+    ImageView btn_AddSuger;
     TextView tv_CoffeStat;
     TextView tv_MilkStat;
     TextView tv_SugerStat;

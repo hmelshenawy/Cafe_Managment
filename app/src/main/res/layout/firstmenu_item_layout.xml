@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#7A8AE2"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:background="@color/cardview_shadow_end_color">
 
         <TextView
             android:id="@+id/tvi_itemName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:gravity="center|left"
+            android:gravity="center|start"
             android:padding="5dp"
-            android:text="ItemName"
-            android:textSize="18dp" />
+            android:text="@string/itemname"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvi_itemPrice"
@@ -25,7 +30,14 @@
             android:layout_weight="2"
             android:gravity="center"
             android:padding="5dp"
-            android:text="itemPrice"
+            android:text="@string/itemprice"
+            android:textColor="#FFFFFF"
             android:textSize="18sp" />
     </LinearLayout>
-</LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/linearLayout"
+        android:background="@color/mywhite" />
+</RelativeLayout>
